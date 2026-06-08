@@ -56,6 +56,50 @@ placeholder favicon in `public/`. The fastest path is to **ask Claude** — see
 To go live, follow **[SETUP.md](./SETUP.md)** (GitHub Pages + optional custom domain + the
 citation-refresh secret).
 
+## Customize it with Claude Code
+
+This template is built to be filled in by **[Claude Code](https://claude.com/claude-code)** —
+Anthropic's terminal coding agent (it's what built the template). It reads the included
+[`CLAUDE.md`](./CLAUDE.md) automatically, so you describe your lab in plain English and it edits
+the files for you.
+
+**1. Install Claude Code** (requires a paid Claude plan — Pro/Max/Team/Enterprise — or API access):
+
+```bash
+# macOS / Linux / WSL  (recommended)
+curl -fsSL https://claude.ai/install.sh | bash
+
+# …or Homebrew
+brew install --cask claude-code
+
+# …or npm  (needs Node 18+)
+npm install -g @anthropic-ai/claude-code
+```
+
+Windows PowerShell: `irm https://claude.ai/install.ps1 | iex`. Other options:
+the [setup guide](https://code.claude.com/docs/en/setup).
+
+**2. Open the project and start Claude:**
+
+```bash
+cd your-repo
+npm install
+claude            # first run opens a browser to sign in
+```
+
+**3. Give it your first task.** Claude reads `CLAUDE.md`, so just tell it about your lab:
+
+> Read CLAUDE.md, then set this site up for my lab. Lab name "Example Lab", PI Jane Doe at Some
+> University. Here's my CV (attached) — fill in `src/data/site.ts`, create my people and
+> publications, and use these research topics: X, Y, Z. Then run `npm run dev` so I can preview it.
+
+**4. Iterate in plain English** — *"add my headshot," "make the accent color teal," "import my
+newest papers," "design a logo for my lab."* Keep `npm run dev` running in a second terminal to
+watch changes live at http://localhost:4321.
+
+➡️ See **[CLAUDE.md](./CLAUDE.md)** for the full step-by-step prompt set (identity, taxonomy,
+people, publications, figures, logo/hero, deploy).
+
 ## Commands
 
 | Command           | Action                                              |
