@@ -9,6 +9,24 @@ roster and it fills in the content for you.
 > box. Replace the placeholders with your lab's details (see **[SETUP.md](./SETUP.md)** and
 > **[CLAUDE.md](./CLAUDE.md)**).
 
+## 🔗 Live example
+
+See the template running in production — the [Cohen Laboratory of Translational
+Neuroimaging](https://bchcohenlab.com) site it was built from:
+
+### 👉 **[bchcohenlab.com](https://bchcohenlab.com)**
+
+[![Lab homepage built with this template](docs/screenshots/home.png)](https://bchcohenlab.com)
+
+| People | Publications (filter · search · sort) |
+| :----: | :-----------------------------------: |
+| [![People page](docs/screenshots/people.png)](https://bchcohenlab.com/people) | [![Publications page](docs/screenshots/publications.png)](https://bchcohenlab.com/publications) |
+| **Research (grouped by topic)** | **Figures (copyright-gated)** |
+| [![Research page](docs/screenshots/research.png)](https://bchcohenlab.com/research) | [![Figures page](docs/screenshots/figures.png)](https://bchcohenlab.com/figures) |
+
+*(Your site starts from neutral placeholder content — the screenshots above show a fully
+populated example.)*
+
 ## What you get
 
 - **Pages:** Home, People (with per-person profiles), Research (grouped by topic/approach),
