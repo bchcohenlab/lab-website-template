@@ -132,6 +132,13 @@ The `figures` collection is **gated**: a figure renders only if its frontmatter 
 copyrighted — only mark `rightsConfirmed: true` for figures you have the right to post (open-access
 / CC-licensed, or your own author-reuse rights). Don't post other people's figures.
 
+## Feedback & contributing
+
+Found a bug or a rough edge **in the template itself** (not your own content)? Please report it on
+the [upstream repo's Issues](https://github.com/bchcohenlab/lab-website-template/issues), or open a
+PR. If you're working in Claude Code, it can file the issue or PR for you — see the
+*"Hit a bug in the template?"* section of [CLAUDE.md](./CLAUDE.md).
+
 ## Credit & license
 
 Created by the [Cohen Laboratory of Translational Neuroimaging](https://bchcohenlab.com) and shared

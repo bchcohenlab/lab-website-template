@@ -93,6 +93,49 @@ variable. After that, every push to the default branch redeploys.
 
 ---
 
+## Hit a bug *in the template*? Send it upstream
+
+This site was created from the **[lab-website-template](https://github.com/bchcohenlab/lab-website-template)**
+(upstream: `bchcohenlab/lab-website-template`). When a problem or improvement belongs to the template
+rather than to your own content, report it back so it's fixed for everyone.
+
+**Claude: watch for template-level problems as you work, and when one comes up, proactively offer to
+file it upstream — don't wait to be asked.**
+
+- **Template-level → report upstream:** bugs or rough edges in `src/components/`, `src/pages/`,
+  `src/lib/`, the schemas in `content.config.ts`, `scripts/`, `.github/workflows/`, styles, the
+  build/deploy, or these docs; missing features; confusing or wrong instructions.
+- **Your own content → just fix it here, never report:** anything under `src/content/`,
+  `src/data/site.ts`, your images, or your copy.
+
+**Always confirm with the user before submitting** (issues and PRs are public), draft the
+title/body for their review, and **never include their lab's content, names, emails, or keys** in the
+report. Requires the GitHub CLI authenticated (`gh auth status`); if `gh` is missing, point them to
+the repo's **Issues** tab on github.com.
+
+**Default — open an issue** (works for anyone):
+
+```bash
+gh issue create --repo bchcohenlab/lab-website-template \
+  --title "<short summary>" \
+  --body "<what happened · steps to reproduce · expected vs actual · OS + Node version · a suggested fix/diff if you have one>"
+```
+
+**If you have a concrete fix — open a pull request** (Claude orchestrates this):
+
+```bash
+# 1) fork the template once (separate from this repo), then work inside the fork:
+gh repo fork bchcohenlab/lab-website-template --clone --remote
+# 2) Claude: in the fork, apply ONLY the template fix on a new branch, commit, push.
+# 3) open the PR against upstream:
+gh pr create --repo bchcohenlab/lab-website-template \
+  --title "<short summary>" --body "<what this fixes and why>"
+```
+
+Keep the PR scoped to the template change — no lab-specific content, secrets, or generated `dist/`.
+
+---
+
 ## Conventions for Claude
 
 - Keep all frontmatter valid against `src/content.config.ts`; run `npm run build` to verify.
