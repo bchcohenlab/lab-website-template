@@ -61,6 +61,38 @@ Two options:
 Citation counts fill in automatically once you enable the weekly Action (see SETUP.md), or ask
 Claude to add `citations:` manually.
 
+## Step 4b — Profile links (ORCID, LinkedIn, …)
+
+Each person's `links` can hold `email`, `website`, `scholar`, `orcid`, `twitter`, and `linkedin`
+(rendered as brand icons on their profile). Two complementary ways to fill them in:
+
+**Automated ORCID enrichment — from your own papers.** An ORCID iD is author-asserted on a paper,
+so you can recover your people's ORCIDs straight from your publications' metadata, no searching.
+After Step 4 (so the `publications` collection has DOIs/PMIDs):
+
+```bash
+npm run enrich:orcid -- --email=you@lab.edu             # dry run — shows suggestions
+npm run enrich:orcid -- --write --email=you@lab.edu     # write the exact-name matches
+```
+
+It cross-references every publication's authors via Crossref + PubMed, matches them to your roster
+by name, and fills in `links.orcid`. Exact-name matches are written; partial / surname-only matches
+are printed for you to confirm (add `--include-partial` to write those too). It never overwrites an
+existing iD and reports any conflicts. (`--email` is the polite-pool contact for the APIs.)
+
+**Claude-assisted profile finding — LinkedIn, Scholar, personal sites.** These aren't in publication
+metadata, so ask Claude to look them up:
+
+> **Prompt:** "For each person in `src/content/people/`, find their best-matching **LinkedIn** and
+> **Google Scholar** profile. Use their role, institution, and field (from their bio) to
+> disambiguate same-named people; for each give a confidence (high/med/low) and the evidence, and
+> DON'T guess — leave it blank rather than risk a wrong link. Show me the candidates to confirm
+> before adding anything."
+
+A wrong link on a public page is worse than none — confirm the matches, then have Claude add the
+confirmed URLs to each person's `links`. (For a big roster, Claude can fan this out across several
+search subagents and hand you a checklist.)
+
 ## Step 5 — Figures (mind the copyright gate)
 
 Figures render **only** if `rightsConfirmed: true` (default is `false`). Only post figures you have

@@ -38,6 +38,8 @@ populated example.)*
 - **Image optimization** built in (Astro `<Image>` → responsive WebP).
 - **Automatic citation counts** — an optional weekly GitHub Action refreshes per-paper Google
   Scholar counts via SerpAPI.
+- **Profile-link enrichment** — `npm run enrich:orcid` fills in each person's ORCID iD by
+  cross-referencing your own publications' author metadata (Crossref + PubMed), no searching.
 - **Copyright-safe figures** — figures are hidden unless you explicitly set `rightsConfirmed: true`.
 - **One-click deploy** to GitHub Pages via GitHub Actions (works with a custom domain or a
   `username.github.io/repo` project page).
@@ -121,7 +123,7 @@ src/
   components/     layout + UI (incl. PipelineHero.astro — an example custom hero)
   pages/          one file per route
 public/           favicon set, CNAME, robots.txt
-scripts/          optional helpers (citation refresh, link check, CV importer)
+scripts/          optional helpers (citation refresh, ORCID enrichment, link check, CV importer)
 .github/workflows/ deploy.yml (Pages) + refresh-citations.yml (weekly Scholar counts)
 ```
 
