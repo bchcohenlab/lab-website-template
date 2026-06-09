@@ -43,8 +43,20 @@ Decide 3–6 topics and a couple of method/approach tags for your field.
 > each]. Use the schema in content.config.ts. I’ll drop headshots into `src/assets/people/` named
 > to match the `headshot:` paths.” Then set the PI in `NON_MENTEE_SLUGS` in `src/lib/content.ts`.
 
-Add headshots as ~600px square images in `src/assets/people/`. (Ask Claude how to crop/resize them
-with ImageMagick if needed.)
+Add headshots as ~600px **square** images in `src/assets/people/`. Portraits rarely come square — ask
+Claude to crop each to a centered head-and-shoulders square (face on the upper third, a little
+headroom) so the roster looks consistent; it can do this with ImageMagick.
+
+**Get names and slugs right.** A person's slug is their filename, `first-initial-surname` (e.g.
+`j-ortega-marquez`), and it becomes their profile URL — so a typo'd slug ships a typo'd URL. Ask
+Claude to sanity-check each name against the person's public presence (an easy thing to misspell on a
+roster) and to use the correct surname in the slug. Renaming a slug also means renaming the matching
+`src/assets/people/<slug>` headshot (and its `headshot:` path) — and if that surname appears in a
+publication/figure slug, rename those to match.
+
+**Ordering.** Each group sorts by the numeric `order` field. To list a group alphabetically by
+surname instead (handy for a long Alumni list, so you never renumber when someone joins), ask Claude
+to adjust `getGroupedPeople()` in `src/lib/content.ts` — it can derive the surname from the slug.
 
 ## Step 4 — Publications
 
@@ -63,8 +75,9 @@ Claude to add `citations:` manually.
 
 ## Step 4b — Profile links (ORCID, LinkedIn, …)
 
-Each person's `links` can hold `email`, `website`, `scholar`, `orcid`, `twitter`, and `linkedin`
-(rendered as brand icons on their profile). Two complementary ways to fill them in:
+Each person's `links` can hold `email`, `website`, `scholar`, `orcid`, `twitter`, and `linkedin` —
+rendered as brand icons on their profile page, and (LinkedIn + ORCID) as small badges under their
+card on the People grid. Two complementary ways to fill them in:
 
 **Automated ORCID enrichment — from your own papers.** An ORCID iD is author-asserted on a paper,
 so you can recover your people's ORCIDs straight from your publications' metadata, no searching.
@@ -89,9 +102,12 @@ metadata, so ask Claude to look them up:
 > DON'T guess — leave it blank rather than risk a wrong link. Show me the candidates to confirm
 > before adding anything."
 
-A wrong link on a public page is worse than none — confirm the matches, then have Claude add the
-confirmed URLs to each person's `links`. (For a big roster, Claude can fan this out across several
-search subagents and hand you a checklist.)
+A wrong link on a public page is worse than none, so hold Claude to the "show evidence + confidence,
+never guess" rule above and **verify before publishing**. For a big roster, ask Claude to fan the
+search across several subagents and hand you a clickable checklist (each name with its candidate
+link and a tick box) to confirm — it then adds only the ones you approve. ORCID matches found via
+publication co-authorship (the `enrich:orcid` script) are the most reliable; same-name LinkedIn
+profiles are the easiest to get wrong, so click through and confirm each.
 
 ## Step 5 — Figures (mind the copyright gate)
 

@@ -29,9 +29,10 @@ populated example.)*
 
 ## What you get
 
-- **Pages:** Home, People (with per-person profiles), Research (grouped by topic/approach),
-  Publications (filter by role/topic + search + sort), Figures (copyright-gated), Lab Life
-  (photo gallery with lightbox), Contact (map + links), and a 404.
+- **Pages:** Home, People (per-person profiles with brand-icon social links + LinkedIn/ORCID badges
+  on the roster), Research (grouped by topic/approach), Publications (filter by role/topic + search +
+  sort), Figures (copyright-gated), Lab Life (photo gallery with lightbox), Contact (map + links),
+  and a 404.
 - **Content as Markdown** via Astro content collections (`src/content/`) with typed schemas —
   no database, no CMS required (a CMS can be layered on later with no schema change).
 - **A research-topic taxonomy** that auto-groups the Research page and drives Publications filters.
